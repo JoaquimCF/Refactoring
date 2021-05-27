@@ -100,5 +100,54 @@ public class Client {
     		return total;
     	
     }
+    
+    ////////////////////////////////////////////////////////////////////
+    
+    public String informeHTML() {
+        return composaCapsaleraHTML() +
+               composaDetallHTML() +
+               composaPeuHTML();
+    }
+    
+    public String composaCapsaleraHTML() {
+    	String resultat = "<h1>Informe de lloguers</h1>\n <p>Informe de lloguers del client <em>" +
+                getNom()+"</em>" + " (<strong>" + getNif() + "</strong>)\n";
+            return resultat;	
+    }
+    
+    public String composaDetallHTML() {
+    	String resultat = "<table>\n" + 
+    			"<tr><td><strong>Marca</strong></td><td><strong>Model</strong></td><td><strong>Import</strong></td></tr>     <tr><td>Tata</td><td>Vista</td><td>90.0€</td></tr>";
+    	for (Lloguer lloguer: lloguers) {
+            resultat += "\t<tr><td>" +
+                lloguer.getVehicle().getMarca() +
+                " " +
+                "</td><td>"+lloguer.getVehicle().getModel() + ": " +
+                "</td><td>"+(lloguer.quantitat() * 30) + "€" + "</td></tr>\n";
+            }
+        return resultat;	
+    }
+    
+    public String composaPeuHTML() {
+    	String resultat = "";
+    	resultat += "<p>Import a pagar: <em>" + importTotal() + "€</em></p>\n" +
+                "<p>Punts guanyats: <em>" + bonificacionsTotals() + "</em></p>\n";
+            return resultat;	
+    }
+    
+    public int bonificacionsTotalsHTML() {
+    	int bonificacions = 0;
+    	for (Lloguer lloguer: lloguers) 
+    		bonificacions += lloguer.bonificacions();
+            return bonificacions;	
+    }
+    
+    public double importTotalHTML() {
+    	double total = 0;
+    	for (Lloguer lloguer: lloguers)
+    		total += lloguer.quantitat() * 30;
+    		return total;
+    	
+    }
    
 }
