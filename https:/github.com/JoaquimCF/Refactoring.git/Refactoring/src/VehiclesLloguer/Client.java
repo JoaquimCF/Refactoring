@@ -14,7 +14,7 @@ public class Client {
         this.telefon = telefon;
         this.lloguers = new ArrayList<Lloguer>();
     }
-
+/*....*/
     public String getNif()     { return nif;     }
     public String getNom()     { return nom;     }
     public String getTelefon() { return telefon; }
